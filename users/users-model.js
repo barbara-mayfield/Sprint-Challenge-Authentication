@@ -19,7 +19,7 @@ function findById(id) {
 }
 
 async function add(user) {
-    user.password = await bcrypt.hash(yser.password, 14)
+    user.password = await bcrypt.hash(user.password, 14)
 
     const [id] = await db("users")
         .insert(user)

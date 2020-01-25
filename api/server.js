@@ -17,4 +17,18 @@ server.use('/api/auth', authRouter);
 server.use('/api/users', usersRouter);
 server.use('/api/jokes', authenticate, jokesRouter);
 
+server.get('/', (req, res, next) => {
+    res.json({
+        message: "Welcome to the API"
+    })
+})
+
+server.use((err, req, res, next) => {
+    console.log("Error:", err)
+
+    res.status(500).json({
+        message: "Oops check your code...",
+    })
+})
+
 module.exports = server;
