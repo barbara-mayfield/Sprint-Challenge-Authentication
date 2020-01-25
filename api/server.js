@@ -23,17 +23,6 @@ server.get('/', (req, res, next) => {
     })
 })
 
-server.get("/api", authenticate(), (req, res, next) => {
-    try {
-      res.json({
-        message: "You are authorized",
-        userId: req.id,
-      })
-    } catch (err) {
-      next(err)
-    }
-})
-
 server.use((err, req, res, next) => {
     console.log("Error:", err)
 
