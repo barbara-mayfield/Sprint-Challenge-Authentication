@@ -22,7 +22,7 @@ router.post('/login', async (req, res, next) => {
 
   if (user && passwordValid) {
     const token = jwt.sign({
-      id: user.id,
+      subject: user.id,
       username: user.username,
     }, secrets.jwt, {
       expiresIn: "7d",
