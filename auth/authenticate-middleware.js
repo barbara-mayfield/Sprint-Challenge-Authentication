@@ -10,14 +10,11 @@ module.exports = () => {
     try {
       const token = req.headers.authorization
       const decoded = jwt.verify(token, secrets.jwt)
+      
       req.userId = decoded.subject
-
-      if(!token) {
-      return res.status(401).json({ you: 'shall not pass!' });
-      }
-      next() 
+      next()
   } catch (err) {
-      next(err)
+    return res.status(401).json({ you: 'shall not pass!' });
     }
   }
 }
