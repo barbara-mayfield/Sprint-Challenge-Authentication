@@ -15,7 +15,7 @@ server.use(express.json());
 
 server.use('/api/auth', authRouter);
 server.use('/api/users', usersRouter);
-server.use('/api/jokes', authenticate, jokesRouter);
+server.use('/api/jokes', authenticate(), jokesRouter);
 
 server.get('/', (req, res, next) => {
     res.json({
@@ -27,7 +27,7 @@ server.use((err, req, res, next) => {
     console.log("Error:", err)
 
     res.status(500).json({
-        message: "Oops check your code...",
+        message: "There was a problem with the server...",
     })
 })
 
